@@ -33,6 +33,28 @@ def index():
     pessoas = Pessoa.query.all()
     return render_template('index.html', pessoas=pessoas)
     
+
+@app.route('/delete/<int:id>', methods=['GET', 'POST'])
+def delete(id):
+    pessoa = Pessoa.query.get(id)
+    if not pessoa:
+        return 'Pessoa não encontrada'
+
+    if request.method == 'POST':
+        try:
+            db.session.delete(pessoa)
+            db.session.commit()
+            return redirect('/')
+        except:
+            return 'Ocorreu um erro ao excluir a pessoa'
+
+    # Método GET: Mostrar a página de confirmação de exclusão
+    return render_template('delecao.html', pessoa=pessoa)
+
+
+
+
+
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()

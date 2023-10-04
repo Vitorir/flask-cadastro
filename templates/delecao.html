@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirmação de Exclusão</title>
+</head>
+<body>
+    <h1>Confirmação de Exclusão</h1>
+    
+    <p>Você tem certeza de que deseja excluir a pessoa {{ pessoa.nome }}?</p>
+    
+    <form method="post" action="/delete/{{ pessoa.id }}">
+        <input type="submit" value="Sim, Excluir">
+        <a href="/">Cancelar</a>
+    </form>
+</body>
+</html>
