@@ -1,6 +1,7 @@
 # Instalar dependências
 ~~~html
 python -m venv nome_da_pasta
+.\venv\Scripts\activate
 pip install Flask
 pip install flask_sqlalchemy
 ~~~
